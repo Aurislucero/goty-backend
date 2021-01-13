@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>para carlos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../font.css">
+    <meta charset="UTF-8">
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            /* background-color: #144cfc; */
+        }
+        
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-image: linear-gradient(to right, #034378, #2d4e68);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            height: 100vh;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        h1 {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 300;
+        }
+        
+        .row {
+            max-width: 900px;
+            margin: 50px auto 0;
+        }
+        
+        .card {
+            float: left;
+            padding: 0 1.7rem;
+            width: 50%;
+        }
+        
+        .card .menu-content {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        
+        .card .menu-content::before,
+        .card .menu-content::after {
+            content: '';
+            display: table;
+        }
+        
+        .card .menu-content::after {
+            clear: both;
+        }
+        
+        .card .menu-content li {
+            display: inline-block;
+        }
+        
+        .card .menu-content a {
+            color: #fff;
+        }
+        
+        .card .menu-content span {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            font-size: 10px;
+            font-weight: 700;
+            font-family: 'Open Sans';
+            transform: translate(-50%, 0);
+        }
+        
+        .card .wrapper {
+            background-color: #fff;
+            min-height: 605px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card .wrapper:hover .data {
+            transform: translateY(0);
+        }
+        
+        .card .data {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            transform: translateY(calc(70px + 1em));
+            transition: transform 0.3s;
+        }
+        
+        .card .data .content {
+            padding: 1em;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .card .author {
+            font-size: 12px;
+        }
+        
+        .card .title {
+            margin-top: 10px;
+        }
+        
+        .card .text {
+            height: 70px;
+            margin: 0;
+        }
+        
+        .card input[type='checkbox'] {
+            display: none;
+        }
+        
+        .card input[type='checkbox']:checked+.menu-content {
+            transform: translateY(-60px);
+        }
+        
+        .example-1 .wrapper {
+            background: url(https://firebasestorage.googleapis.com/v0/b/firestore-grafica-44390.appspot.com/o/DSC05367.JPG?alt=media&token=51cacf27-83bd-4833-a7b8-c08c349a66e3) 20% 1% / cover no-repeat;
+        }
+        
+        .example-1 .wrapper2 {
+            background: url(https://firebasestorage.googleapis.com/v0/b/firestore-grafica-44390.appspot.com/o/DSC05160.JPG?alt=media&token=f1ec49bb-bdd4-4e4f-91ef-8369a38f335c) 20% 1% / cover no-repeat;
+        }
+        
+        .example-1 .date {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #77d7b9;
+            color: #fff;
+            padding: 0.8em;
+        }
+        
+        .example-1 .date span {
+            display: block;
+            text-align: center;
+        }
+        
+        .example-1 .date .day {
+            font-weight: 700;
+            font-size: 24px;
+            text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.18);
+        }
+        
+        .example-1 .date .month {
+            text-transform: uppercase;
+        }
+        
+        .example-1 .date .month,
+        .example-1 .date .year {
+            font-size: 12px;
+        }
+        
+        .example-1 .content {
+            height: 351px;
+            background-color: #fff;
+            box-shadow: 0 5px 30px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .example-1 .title a {
+            color: #808080;
+        }
+        
+        .example-1 .menu-button {
+            position: absolute;
+            z-index: 999;
+            top: 16px;
+            right: 16px;
+            width: 25px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .example-1 .menu-button span {
+            width: 5px;
+            height: 5px;
+            background-color: #808080;
+            color: #808080;
+            position: relative;
+            display: inline-block;
+            border-radius: 50%;
+        }
+        
+        .example-1 .menu-button span::after,
+        .example-1 .menu-button span::before {
+            content: '';
+            display: block;
+            width: 5px;
+            height: 5px;
+            background-color: currentColor;
+            position: absolute;
+            border-radius: 50%;
+        }
+        
+        .example-1 .menu-button span::before {
+            left: -10px;
+        }
+        
+        .example-1 .menu-button span::after {
+            right: -10px;
+        }
+        
+        .example-1 .menu-content {
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: -1;
+            transition: transform 0.3s;
+            transform: translateY(0);
+        }
+        
+        .example-1 .menu-content li {
+            width: 33.333333%;
+            float: left;
+            background-color: #77d7b9;
+            height: 60px;
+            position: relative;
+        }
+        
+        .example-1 .menu-content a {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+        }
+        
+        .example-1 .menu-content span {
+            top: -10px;
+        }
+        
+        .example-2 .wrapper {
+            background: url(https://firebasestorage.googleapis.com/v0/b/firestore-grafica-44390.appspot.com/o/WhatsApp%20Image%202020-09-20%20at%2010.11.21%20AM.jpeg?alt=media&token=e850f9be-5937-46f6-9da3-9d7c26f96d77) center / cover no-repeat;
+        }
+        
+        .example-2 .wrapper2 {
+            background: url(https://firebasestorage.googleapis.com/v0/b/firestore-grafica-44390.appspot.com/o/WhatsApp%20Image%202020-09-05%20at%209.51.59%20PM.jpeg?alt=media&token=6072cba3-ba14-42d7-8164-f373b90d77bc) center / cover no-repeat;
+        }
+        
+        .example-2 .wrapper:hover .menu-content span {
+            transform: translate(-50%, -10px);
+            opacity: 1;
+        }
+        
+        .example-2 .header {
+            color: #fff;
+            padding: 1em;
+        }
+        
+        .example-2 .header::before,
+        .example-2 .header::after {
+            content: '';
+            display: table;
+        }
+        
+        .example-2 .header::after {
+            clear: both;
+        }
+        
+        .example-2 .header .date {
+            float: left;
+            font-size: 12px;
+        }
+        
+        .example-2 .menu-content {
+            float: right;
+        }
+        
+        .example-2 .menu-content li {
+            margin: 0 5px;
+            position: relative;
+        }
+        
+        .example-2 .menu-content span {
+            transition: all 0.3s;
+            opacity: 0;
+        }
+        
+        .example-2 .data {
+            color: #fff;
+            transform: translateY(calc(70px + 4em));
+            height: 420px;
+        }
+        
+        .example-2 .title a {
+            color: #fff;
+        }
+        
+        .example-2 .button {
+            display: block;
+            width: 100px;
+            margin: 2em auto 1em;
+            text-align: center;
+            font-size: 12px;
+            color: #fff;
+            line-height: 1;
+            position: relative;
+            font-weight: 700;
+        }
+        
+        .example-2 .button::after {
+            content: '\2192';
+            opacity: 0;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translate(0, -50%);
+            transition: all 0.3s;
+        }
+        
+        .example-2 .button:hover::after {
+            transform: translate(5px, -50%);
+            opacity: 1;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="row">
+        <div class="example-1 card">
+            <div class="wrapper">
+                <div class="date">
+                    <span class="day">30</span>
+                    <span class="month">Nov</span>
+                    <span class="year">2020</span>
+                </div>
+                <div class="data">
+                    <div class="content">
+                        <span class="author"></span>
+                        <h1 class="title"><a href="#">Nuestro amor en pandemia</a></h1>
+                        <p class="text">Hola amor es la primera carta que te escribo y quiero expresar todo lo que siento por ti y recordar las cosas lindas que hemos vividos como cuando todo empezó, que siempre lo recordamos con mucha alegria , de como se dieron las
+                            cosas entre nosotros, de que empezamos nuestra relación en medio de una pandemia y sin pensarlo han pasado 5 meses y 14 dias aproximadamente</p>
+                        <label for="show-menu" class="menu-button"><span></span></label>
+                    </div>
+                    <input type="checkbox" id="show-menu" />
+                    <ul class="menu-content">
+                        <li>
+                            <a href="#" class="fa fa-bookmark-o"></a>
+                        </li>
+                        <li><a href="#" class="fa fa-heart-o"><span>TEPEAPAMOPO</span></a></li>
+                        <li><a href="#" class="fa fa-comment-o"><span>MUPUCHOPO</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="example-1 card">
+            <div class="wrapper wrapper2">
+                <div class="date">
+                    <span class="day">30</span>
+                    <span class="month">Nov</span>
+                    <span class="year">2021</span>
+                </div>
+                <div class="data">
+                    <div class="content">
+                        <span class="author"></span>
+                        <h1 class="title"><a href="#">Nuestro amor en pandemia</a></h1>
+                        <p class="text"> y siento que cada dia te amo mas,que te has convertido en alguien muy importante en mi vida, y que me siento triste al no saber de ti por mucho tiempo, o el hecho de saber que esta bien mi amorcito me hace estar bien.</p>
+                    </div>
+                    <input type="checkbox" id="show-menu" />
+                    <ul class="menu-content">
+                        <li>
+                            <a href="#" class="fa fa-bookmark-o"></a>
+                        </li>
+                        <li><a href="#" class="fa fa-heart-o"><span>TEPEAPAMOPO</span></a></li>
+                        <li><a href="#" class="fa fa-comment-o"><span>MUPUCHOPO</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="example-2 card">
+            <div class="wrapper">
+                <div class="header">
+                    <!-- <div class="date">
+                        <span class="day">12</span>
+                        <span class="month">Aug</span>
+                        <span class="year">2016</span>
+                    </div> -->
+                </div>
+                <div class="data">
+                    <div class="content">
+                        <h1 class="title"><a href="#">Te amo</a></h1>
+                        <p class="text"> siento que he conocido a la mejor pareja, tu dices que tienes suerte de que yo me haya fijado en ti pero yo tambien opino lo mismo contigo, porque soy muy afortunada de tenerte, me encanta todo de ti, me gustas mucho fisicamente,
+                            me atraes mucho y ademas me encanta como eres , te he dicho que te admiro por lo que haces y por lo que eres. Y estoy muy feliz de que sigas superandote. Me gusta como es nuestra relación, nos comprendemos bastante siento que
+                            somos el uno para el otro :). Tus llamadas por las noches hace que sienta que dormimos juntos a pesar de que no lo estemos, por el hecho de que vivimos lejos :(.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="example-2 card">
+            <div class="wrapper wrapper2">
+                <div class="header">
+                </div>
+                <div class="data">
+                    <div class="content">
+                        <!-- <h1 class="title"><a href="#">Stranger Things: The sound of the Upside Down</a></h1> -->
+                        <p class="text"> La pandemia fue buena y mala a la vez con nosotros, nos juntó pero nos tiene separados jajaj. Te amo amor y nunca voy a dejar de decirte que te amo, lo que si quiero dejar de decir es que te extraño. Gracias por darme tu tiempo
+                            y hacer que sigamos compartiendo momentos muy hermosos. mi 2020 no empezó tan bien pero termino sumamente bien porque impactaste mi vida y llegaste para quedarte, no te dejar&eacute; ir ajajja
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
